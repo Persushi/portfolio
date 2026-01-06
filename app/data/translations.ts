@@ -12,18 +12,19 @@ export const translations = {
       name: "Mateo Persich",
       title: "Backend Developer",
       subtitle: "Programador Node.js",
-      description: "Desarrollador backend con más de 4 años de experiencia profesional. La programación cambió mi vida desde la cuarentena, desde entonces estoy muy enganchado con la tecnología. Participé en proyectos a gran escala, suelo conversar sobre negocios con amigos y soy consultor en una startup con base en Finlandia.",
+      description: "Tengo 26 años y programo desde hace más de 5 años, con experiencia en distintos proyectos y tecnologías. Me encanta viajar, practicar inglés y aprender cosas nuevas constantemente. En mi tiempo libre suelo participar en cursos de todo tipo; actualmente estoy muy metido en la música y la mezcla. Comparto mis días con mi gata Mandarina, que siempre anda cerca mientras trabajo.",
       viewProjects: "Ver Experiencia",
       contactMe: "Contáctame"
     },
-    about: {
-      title: "Sobre Mí",
-      paragraph1: "Desarrollador backend con más de 4 años de experiencia profesional. La programación cambió mi vida desde la cuarentena, desde entonces estoy muy enganchado con la tecnología.",
-      paragraph2: "Participé en proyectos a gran escala, trabajando con tecnologías como Node.js, TypeScript, NestJS, y diversos servicios de AWS. He desarrollado y mantenido microservicios para plataformas con más de 1 millón de usuarios.",
-      paragraph3: "Suelo conversar sobre negocios con amigos y soy consultor en una startup con base en Finlandia. Actualmente busco trabajo remoto, aunque también estoy abierto a reubicarme.",
-      location: "Córdoba, Argentina",
-      status: "Buscando oportunidades remotas"
-    },
+about: {
+  title: "Sobre Mí",
+  paragraph1: "Desarrollador backend con más de 5 años de experiencia profesional. La programación cambió mi vida durante la cuarentena y, desde entonces, estoy profundamente enganchado con la tecnología, especialmente con la inteligencia artificial.",
+  paragraph2: "He participado en una amplia variedad de proyectos, desde startups hasta sistemas productivos de alta demanda y escalabilidad, trabajando principalmente con TypeScript y servicios de AWS.",
+  paragraph3: "Al final del día me gusta desconectar y probar recetas nuevas, aunque no es raro que se prenda el foquito y me den ganas de codear en horarios poco convencionales, cuando me siento más productivo. Me interesa conocer nuevas ciudades, por lo que prefiero el trabajo remoto o con posibilidad de relocalización.",
+  location: "Córdoba, Argentina",
+  status: "Buscando oportunidades remotas o con relocalización"
+},
+
     clients: {
       title: "Clientes"
     },
@@ -152,18 +153,18 @@ export const translations = {
       name: "Mateo Persich",
       title: "Backend Developer",
       subtitle: "Node.js Programmer",
-      description: "Backend developer with over 4 years of professional experience. Programming changed my life since quarantine, and since then I've been hooked on technology. I've participated in large-scale projects, often discuss business with friends, and work as a consultant for a Finland-based startup.",
+      description: "I’m 26 years old and I’ve been working as a programmer for over 5 years, with experience across different projects and technologies. I enjoy traveling, practicing English, and constantly learning new things. In my free time, I like taking all kinds of courses—currently focused on music and mixing. I also share my day-to-day life with my cat, Mandarina, who often keeps me company while I work",
       viewProjects: "View Experience",
       contactMe: "Contact Me"
     },
-    about: {
-      title: "About Me",
-      paragraph1: "Backend developer with over 4 years of professional experience. Programming changed my life since quarantine, and since then I've been hooked on technology.",
-      paragraph2: "I've participated in large-scale projects, working with technologies like Node.js, TypeScript, NestJS, and various AWS services. I've developed and maintained microservices for platforms with over 1 million users.",
-      paragraph3: "I often discuss business with friends and work as a consultant for a Finland-based startup. I'm currently looking for remote work, though I'm also open to relocating.",
-      location: "Córdoba, Argentina",
-      status: "Seeking remote opportunities"
-    },
+about: {
+  title: "About Me",
+  paragraph1: "Backend developer with over 5 years of professional experience. Programming changed my life during the lockdown, and since then I’ve been deeply engaged with technology, especially artificial intelligence.",
+  paragraph2: "I’ve worked on a wide range of projects, from startups to high-demand, highly scalable production systems, mainly using TypeScript and AWS services.",
+  paragraph3: "At the end of the day, I enjoy disconnecting and trying new recipes, although it’s quite common for a spark to hit and make me want to code at unusual hours, when I feel most productive. I’m especially interested in discovering new cities, which is why I prefer remote work or relocation opportunities.",
+  location: "Córdoba, Argentina",
+  status: "Open to remote or relocation opportunities"
+},
     clients: {
       title: "Clients"
     },

@@ -50,7 +50,7 @@ export default function Hero() {
               <div className="w-full h-full rounded-[36px] overflow-hidden">
                 {!imageError ? (
                   <Image
-                    src="https://i.imgur.com/hVFaKyo.jpeg"
+                    src="me.jpg"
                     alt="Mateo Persich"
                     fill
                     className="object-cover"

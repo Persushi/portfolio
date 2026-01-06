@@ -36,7 +36,7 @@ export default function Projects() {
                 </div>
 
                 {/* Card */}
-                <div className={`ml-20 md:ml-0 w-full md:w-[calc(55%-2rem)] ${
+                <div className={`ml-20 md:ml-0 w-full md:w-[calc(55%-5rem)] ${
                   index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
                 }`}>
                   <div className="glass-strong rounded-[24px] p-6 md:p-8 shadow-ios hover:shadow-ios-strong transition-all duration-300 hover:scale-[1.02]"

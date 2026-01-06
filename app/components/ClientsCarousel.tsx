@@ -17,20 +17,19 @@ export default function ClientsCarousel() {
   const clients = [
     { name: "Naranja X", logo: "/clients/naranjax.png" },
     { name: "Personal Pay", logo: "/clients/ppay.png" },
-    { name: "Emergencias", logo: "/clients/emergencias.jpg" },
+    { name: "Emergencias", logo: "/clients/emergencias.png" },
     { name: "CTrading", logo: "/clients/ctrading.png" },
     { name: "Acceleanation", logo: "/clients/Acceleanation.png" },
-    { name: "Replace IT", logo: "/clients/replace.jpg" },
+    { name: "Replace IT", logo: "/clients/replace.png" },
     { name: "Intermedia IT", logo: "/clients/intermedia.png" },
-    { name: "Flow", logo: "/clients/flow.png" },
-    { name: "Chubut IT", logo: "/clients/logo1.webp" },
-    { name: "Avenga Latam", logo: "/clients/avenga.webp" },
-    { name: "Phorus Group", logo: "/clients/phorus.svg" },
-    { name: "Sowy Producciones", logo: "/clients/303268627_776740187026926_5440637150905546151_n.png" }
+    { name: "Chubut IT", logo: "/clients/chubut.png" },
+    { name: "Avenga Latam", logo: "/clients/avenga.png" },
+    { name: "Phorus Group", logo: "/clients/phorus.png" },
+    { name: "Sowy Producciones", logo: "/clients/logo1.webp" }
   ];
 
-  // Triplicar el array para asegurar un loop verdaderamente infinito
-  const duplicatedClients = [...clients, ...clients, ...clients];
+  // duplicamos para que el loop sea fluido
+  const duplicatedClients = [...clients];
 
   return (
     <section className="py-16 overflow-hidden border-y border-white/10">
@@ -42,20 +41,14 @@ export default function ClientsCarousel() {
       </div>
 
       <div className="relative">
-        {/* Gradientes en los bordes para efecto fade sutil */}
-
         <motion.div
           className="flex gap-6 items-center"
-          animate={{
-            x: [0, -(clients.length * (222 + 24))]
-          }}
+          animate={{ x: "-100%" }}
           transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 30,
-              ease: "linear"
-            }
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: 30,
+            ease: "linear"
           }}
         >
           {duplicatedClients.map((client, index) => (
@@ -63,10 +56,10 @@ export default function ClientsCarousel() {
               key={`${client.name}-${index}`}
               className="flex-shrink-0"
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              transition={{ type: "spring", stiffness: 300, damping: 250 }}
             >
-              <div className="relative w-48 h-32 glass-strong rounded-[20px] p-4 hover:bg-white/20 transition-all duration-300 shadow-ios">
-                <div className="relative w-full h-full grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+              <div className="relative w-80 h-80 rounded-[20px] p-4 transition-all duration-30">
+                <div className="relative w-full h-full transition-all duration-300 opacity-80 hover:opacity-100">
                   <Image
                     src={client.logo}
                     alt={client.name}
