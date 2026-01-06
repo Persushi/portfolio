@@ -27,6 +27,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -37,6 +38,55 @@ body {
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ========== CUSTOM SCROLLBAR ========== */
+
+/* Scrollbar para WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #5AC8FA, #007AFF);
+  border-radius: 5px;
+  border: 2px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #007AFF, #5AC8FA);
+}
+
+/* Scrollbar cyber mode */
+html.glitch-font::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00ffff, #ff0080);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+html.glitch-font::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff0080, #00ffff);
+  box-shadow: 0 0 15px rgba(255, 0, 128, 0.5);
+}
+
+html.glitch-font::-webkit-scrollbar-track {
+  background: var(--background);
+  border-left: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+/* Scrollbar para Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #007AFF var(--background);
+}
+
+html.glitch-font * {
+  scrollbar-color: #00ffff var(--background);
 }
 
 /* Glitch font mode */
@@ -175,5 +225,1125 @@ html.glitch-font body > * {
   100% {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+/* ========== CYBER MODE TRANSITION EFFECTS ========== */
+
+/* Ocultar scrollbar durante transiciones */
+html.cyber-transitioning,
+html.cyber-transitioning body {
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+}
+
+html.cyber-transitioning::-webkit-scrollbar,
+html.cyber-transitioning body::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+}
+
+/* Overlay de transición glitch */
+.cyber-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+}
+
+.cyber-transition-overlay.active {
+  animation: glitch-flash 0.6s ease-out forwards;
+}
+
+@keyframes glitch-flash {
+  0% {
+    opacity: 0;
+    background: transparent;
+  }
+  10% {
+    opacity: 1;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 255, 255, 0.15) 0%,
+      rgba(255, 0, 128, 0.1) 50%,
+      rgba(0, 255, 255, 0.15) 100%
+    );
+  }
+  20% {
+    opacity: 0.8;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 0, 128, 0.2) 0%,
+      transparent 50%,
+      rgba(0, 255, 255, 0.2) 100%
+    );
+  }
+  30% {
+    opacity: 1;
+    background: rgba(0, 255, 255, 0.1);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    background: transparent;
+  }
+}
+
+/* Scanlines durante transición */
+.cyber-transition-overlay.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 255, 0.03) 2px,
+    rgba(0, 255, 255, 0.03) 4px
+  );
+  animation: scanlines-move 0.1s linear infinite;
+}
+
+@keyframes scanlines-move {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+/* Glitch effect en texto durante transición */
+.cyber-transitioning * {
+  animation: text-glitch 0.5s ease-out !important;
+}
+
+@keyframes text-glitch {
+  0% {
+    text-shadow: 0 0 0 transparent;
+    transform: translate(0);
+  }
+  10% {
+    text-shadow: -3px 0 #ff0080, 3px 0 #00ffff;
+    transform: translate(-2px, 1px);
+  }
+  20% {
+    text-shadow: 3px 0 #ff0080, -3px 0 #00ffff;
+    transform: translate(2px, -1px);
+  }
+  30% {
+    text-shadow: -2px 0 #ff0080, 2px 0 #00ffff;
+    transform: translate(-1px, 2px);
+  }
+  40% {
+    text-shadow: 2px 0 #ff0080, -2px 0 #00ffff;
+    transform: translate(1px, -2px);
+  }
+  50% {
+    text-shadow: -1px 0 #ff0080, 1px 0 #00ffff;
+    transform: translate(0);
+  }
+  100% {
+    text-shadow: 0 0 0 transparent;
+    transform: translate(0);
+  }
+}
+
+/* ========== ENHANCED GLITCH MODE STYLES ========== */
+
+/* Neon glow para modo cyber */
+html.glitch-font h1,
+html.glitch-font h2 {
+  text-shadow:
+    0 0 10px rgba(0, 255, 255, 0.5),
+    0 0 20px rgba(0, 255, 255, 0.3),
+    0 0 30px rgba(0, 255, 255, 0.2);
+}
+
+/* Cyber border glow */
+html.glitch-font .glass,
+html.glitch-font .glass-strong {
+  border-color: rgba(0, 255, 255, 0.2);
+  box-shadow:
+    0 0 10px rgba(0, 255, 255, 0.1),
+    inset 0 0 20px rgba(0, 255, 255, 0.05);
+}
+
+/* Cyber button glow */
+html.glitch-font .btn-ios {
+  box-shadow:
+    0 0 15px rgba(0, 255, 255, 0.3),
+    0 0 30px rgba(255, 0, 128, 0.2);
+}
+
+html.glitch-font .btn-ios:hover {
+  box-shadow:
+    0 0 20px rgba(0, 255, 255, 0.5),
+    0 0 40px rgba(255, 0, 128, 0.3);
+}
+
+/* Animación horizontal para indicador de flecha */
+@keyframes bounce-x {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(6px);
+  }
+}
+
+.animate-bounce-x {
+  animation: bounce-x 1s ease-in-out infinite;
+}
+
+/* ========== HERO IMAGE FRAME ========== */
+
+/* Marco base para la foto de presentación */
+.hero-image-frame {
+  position: relative;
+  border-radius: 40px;
+  padding: 4px;
+  background: linear-gradient(135deg, #5AC8FA, #007AFF);
+  box-shadow:
+    0 8px 40px rgba(0, 122, 255, 0.3),
+    0 4px 20px rgba(90, 200, 250, 0.2);
+}
+
+/* Animación de luz recorriendo el borde - modo normal */
+.hero-image-frame::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 43px;
+  background: conic-gradient(
+    from var(--light-angle, 0deg),
+    transparent 0deg,
+    transparent 300deg,
+    #5AC8FA 330deg,
+    #007AFF 350deg,
+    transparent 360deg
+  );
+  animation: light-rotate 3s linear infinite;
+  z-index: -1;
+}
+
+.hero-image-frame::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 42px;
+  background: conic-gradient(
+    from var(--light-angle, 0deg),
+    transparent 0deg,
+    transparent 340deg,
+    rgba(90, 200, 250, 0.8) 355deg,
+    transparent 360deg
+  );
+  animation: light-rotate 3s linear infinite;
+  filter: blur(6px);
+  z-index: -1;
+}
+
+@property --light-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes light-rotate {
+  0% {
+    --light-angle: 0deg;
+  }
+  100% {
+    --light-angle: 360deg;
+  }
+}
+
+/* Marco cyber para la foto en modo glitch - luz viajando por el borde */
+html.glitch-font .hero-image-frame {
+  padding: 5px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  animation: frame-glitch 4s ease-in-out infinite;
+  box-shadow:
+    0 0 15px rgba(0, 255, 255, 0.3),
+    0 0 30px rgba(255, 0, 128, 0.2);
+}
+
+/* Luz principal viajando por el borde */
+html.glitch-font .hero-image-frame::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 44px;
+  background: conic-gradient(
+    from var(--cyber-light-angle, 0deg),
+    transparent 0deg,
+    transparent 260deg,
+    #00ffff 280deg,
+    #ff0080 310deg,
+    #7b00ff 330deg,
+    #00ff88 350deg,
+    transparent 360deg
+  );
+  animation: cyber-light-rotate 2s linear infinite;
+  z-index: -1;
+}
+
+/* Resplandor de la luz (menos difuminado) */
+html.glitch-font .hero-image-frame::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: 46px;
+  background: conic-gradient(
+    from var(--cyber-light-angle, 0deg),
+    transparent 0deg,
+    transparent 280deg,
+    rgba(0, 255, 255, 0.6) 300deg,
+    rgba(255, 0, 128, 0.5) 320deg,
+    rgba(123, 0, 255, 0.4) 340deg,
+    transparent 360deg
+  );
+  animation: cyber-light-rotate 2s linear infinite;
+  filter: blur(4px);
+  z-index: -2;
+}
+
+@property --cyber-light-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes cyber-light-rotate {
+  0% {
+    --cyber-light-angle: 0deg;
+  }
+  100% {
+    --cyber-light-angle: 360deg;
+  }
+}
+
+@keyframes scanline-move {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 4px; }
+}
+
+@keyframes frame-glitch {
+  0%, 100% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  2% {
+    transform: translate(-2px, 1px);
+    filter: hue-rotate(10deg);
+  }
+  4% {
+    transform: translate(2px, -1px);
+    filter: hue-rotate(-10deg);
+  }
+  6% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  52% {
+    transform: translate(1px, -2px);
+    filter: hue-rotate(20deg);
+  }
+  54% {
+    transform: translate(-1px, 2px);
+    filter: hue-rotate(-20deg);
+  }
+  56% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotate-gradient {
+  0% {
+    --angle: 0deg;
+  }
+  100% {
+    --angle: 360deg;
+  }
+}
+
+/* ========== SPLASH SCREEN ========== */
+
+/* Cuando el splash está activo, ocultar todo el contenido y scrollbar */
+body.splash-active,
+body.splash-exiting {
+  overflow: hidden !important;
+}
+
+body.splash-active::-webkit-scrollbar,
+body.splash-exiting::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+}
+
+body.splash-active > *:not(.splash-screen),
+body.splash-exiting > *:not(.splash-screen) {
+  visibility: hidden;
+  opacity: 0;
+}
+
+html:has(body.splash-active),
+html:has(body.splash-exiting) {
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+}
+
+html:has(body.splash-active)::-webkit-scrollbar,
+html:has(body.splash-exiting)::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+}
+
+/* Animación de entrada del contenido principal */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+/* ========== LANGUAGE TRANSITION ========== */
+
+.lang-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0;
+  background: transparent;
+}
+
+.lang-transition-overlay.active {
+  animation: lang-flash 0.4s ease-out forwards;
+}
+
+@keyframes lang-flash {
+  0% {
+    opacity: 0;
+    background: transparent;
+  }
+  30% {
+    opacity: 1;
+    background: rgba(0, 122, 255, 0.1);
+  }
+  50% {
+    opacity: 1;
+    background: rgba(90, 200, 250, 0.15);
+  }
+  100% {
+    opacity: 0;
+    background: transparent;
+  }
+}
+
+/* Versión cyber del flash de idioma */
+html.glitch-font .lang-transition-overlay.active {
+  animation: lang-flash-cyber 0.4s ease-out forwards;
+}
+
+@keyframes lang-flash-cyber {
+  0% {
+    opacity: 0;
+    background: transparent;
+  }
+  20% {
+    opacity: 1;
+    background: rgba(0, 255, 255, 0.15);
+  }
+  40% {
+    opacity: 1;
+    background: rgba(255, 0, 128, 0.1);
+  }
+  60% {
+    opacity: 1;
+    background: rgba(0, 255, 255, 0.1);
+  }
+  100% {
+    opacity: 0;
+    background: transparent;
+  }
+}
+
+/* Efecto en el texto durante transición de idioma */
+.lang-transitioning * {
+  transition: opacity 0.15s ease-out;
+}
+
+.lang-transitioning p,
+.lang-transitioning h1,
+.lang-transitioning h2,
+.lang-transitioning h3,
+.lang-transitioning span,
+.lang-transitioning a,
+.lang-transitioning button {
+  animation: text-fade 0.4s ease-out;
+}
+
+@keyframes text-fade {
+  0% { opacity: 1; }
+  30% { opacity: 0.3; }
+  60% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* ========== GLITCH REVEAL ANIMATIONS ========== */
+
+.glitch-reveal {
+  opacity: 0;
+  animation: glitch-appear 0.8s ease-out forwards;
+}
+
+/* Animación especial para la navbar (fixed position) */
+.navbar-reveal {
+  animation: navbar-glitch-appear 0.6s ease-out forwards;
+}
+
+@keyframes navbar-glitch-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+    filter: blur(10px);
+  }
+  20% {
+    opacity: 0.5;
+    transform: translateY(-15px) skewX(-2deg);
+    filter: blur(5px);
+  }
+  40% {
+    transform: translateY(-5px) skewX(1deg);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateY(2px);
+    filter: blur(2px);
+  }
+  80% {
+    transform: translateY(-1px) skewX(-0.5deg);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+html.glitch-font .navbar-reveal {
+  animation: navbar-glitch-appear-cyber 0.6s ease-out forwards;
+}
+
+@keyframes navbar-glitch-appear-cyber {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+    filter: blur(15px) hue-rotate(90deg);
+  }
+  15% {
+    opacity: 0.3;
+    transform: translateY(-25px) translateX(-2%) skewX(-3deg);
+    text-shadow: -3px 0 #ff0080, 3px 0 #00ffff;
+  }
+  30% {
+    opacity: 0.6;
+    transform: translateY(-15px) translateX(2%) skewX(2deg);
+    filter: blur(8px) hue-rotate(45deg);
+  }
+  45% {
+    transform: translateY(-8px) skewX(-1deg);
+    text-shadow: 2px 0 #ff0080, -2px 0 #00ffff;
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateY(-3px) translateX(-1%);
+    filter: blur(3px) hue-rotate(20deg);
+  }
+  75% {
+    transform: translateY(1px) translateX(1%) skewX(0.5deg);
+    filter: blur(1px);
+  }
+  90% {
+    transform: translateY(-0.5px);
+    filter: blur(0) hue-rotate(0);
+    text-shadow: none;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+    filter: blur(0) hue-rotate(0);
+  }
+}
+
+/* Delays escalonados para cada componente */
+.glitch-reveal-1 { animation-delay: 0.1s; }
+.glitch-reveal-2 { animation-delay: 0.2s; }
+.glitch-reveal-3 { animation-delay: 0.35s; }
+.glitch-reveal-4 { animation-delay: 0.5s; }
+.glitch-reveal-5 { animation-delay: 0.65s; }
+.glitch-reveal-6 { animation-delay: 0.8s; }
+.glitch-reveal-7 { animation-delay: 0.95s; }
+.glitch-reveal-8 { animation-delay: 1.1s; }
+
+@keyframes glitch-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) skewX(0deg);
+    filter: blur(10px);
+    clip-path: inset(0 100% 0 0);
+  }
+  10% {
+    opacity: 0.3;
+    transform: translateY(15px) skewX(-2deg);
+    filter: blur(5px);
+    clip-path: inset(0 80% 0 0);
+  }
+  20% {
+    opacity: 0.5;
+    transform: translateY(10px) skewX(3deg);
+    clip-path: inset(0 50% 0 0);
+  }
+  30% {
+    transform: translateY(5px) skewX(-1deg);
+    clip-path: inset(0 20% 0 0);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(2px) skewX(1deg);
+    filter: blur(2px);
+    clip-path: inset(0 5% 0 0);
+  }
+  70% {
+    transform: translateY(-2px) skewX(-0.5deg);
+    filter: blur(0);
+  }
+  85% {
+    transform: translateY(1px) skewX(0.5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) skewX(0);
+    filter: blur(0);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Versión más intensa para modo cyber */
+html.glitch-font .glitch-reveal {
+  animation: glitch-appear-cyber 0.8s ease-out forwards;
+}
+
+html.glitch-font .glitch-reveal-1 { animation-delay: 0s; }
+html.glitch-font .glitch-reveal-2 { animation-delay: 0.12s; }
+html.glitch-font .glitch-reveal-3 { animation-delay: 0.24s; }
+html.glitch-font .glitch-reveal-4 { animation-delay: 0.36s; }
+html.glitch-font .glitch-reveal-5 { animation-delay: 0.48s; }
+html.glitch-font .glitch-reveal-6 { animation-delay: 0.6s; }
+html.glitch-font .glitch-reveal-7 { animation-delay: 0.72s; }
+html.glitch-font .glitch-reveal-8 { animation-delay: 0.84s; }
+
+@keyframes glitch-appear-cyber {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) translateX(-10px);
+    filter: blur(15px) hue-rotate(90deg);
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  5% {
+    clip-path: polygon(0 0, 15% 0, 10% 100%, 0 100%);
+    text-shadow: -3px 0 #ff0080, 3px 0 #00ffff;
+  }
+  10% {
+    opacity: 0.4;
+    transform: translateY(25px) translateX(5px) skewX(-5deg);
+    filter: blur(10px) hue-rotate(45deg);
+    clip-path: polygon(0 0, 30% 0, 35% 100%, 0 100%);
+  }
+  15% {
+    clip-path: polygon(0 0, 50% 0, 45% 100%, 0 100%);
+    text-shadow: 2px 0 #ff0080, -2px 0 #00ffff;
+  }
+  20% {
+    transform: translateY(20px) translateX(-3px) skewX(3deg);
+    clip-path: polygon(0 0, 55% 0, 60% 100%, 0 100%);
+  }
+  30% {
+    opacity: 0.6;
+    transform: translateY(15px) translateX(2px) skewX(-2deg);
+    filter: blur(5px) hue-rotate(20deg);
+    clip-path: polygon(0 0, 70% 0, 65% 100%, 0 100%);
+  }
+  40% {
+    clip-path: polygon(0 0, 80% 0, 85% 100%, 0 100%);
+    text-shadow: -1px 0 #ff0080, 1px 0 #00ffff;
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(8px) translateX(-1px);
+    filter: blur(3px) hue-rotate(10deg);
+    clip-path: polygon(0 0, 90% 0, 88% 100%, 0 100%);
+  }
+  60% {
+    transform: translateY(5px) translateX(1px) skewX(1deg);
+    clip-path: polygon(0 0, 95% 0, 97% 100%, 0 100%);
+  }
+  70% {
+    opacity: 0.9;
+    transform: translateY(2px) skewX(-0.5deg);
+    filter: blur(1px) hue-rotate(5deg);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  80% {
+    transform: translateY(-1px) translateX(-0.5px);
+    text-shadow: 0.5px 0 #ff0080, -0.5px 0 #00ffff;
+  }
+  90% {
+    transform: translateY(0.5px) skewX(0.2deg);
+    filter: blur(0) hue-rotate(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateX(0) skewX(0);
+    filter: blur(0) hue-rotate(0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    text-shadow: none;
+  }
+}
+
+/* Líneas de glitch durante la revelación */
+html.glitch-font .glitch-reveal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  animation: scan-line-reveal 0.8s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes scan-line-reveal {
+  0% {
+    opacity: 1;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #0a0a0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  overflow: hidden;
+}
+
+.splash-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+  0% {
+    transform: perspective(500px) rotateX(60deg) translateY(0);
+  }
+  100% {
+    transform: perspective(500px) rotateX(60deg) translateY(50px);
+  }
+}
+
+.splash-scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.3) 2px,
+    rgba(0, 0, 0, 0.3) 4px
+  );
+  pointer-events: none;
+}
+
+.splash-glitch-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.splash-glitch-lines::before,
+.splash-glitch-lines::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, #00ffff 20%, #ff0080 50%, #00ffff 80%, transparent 100%);
+  animation: glitch-line 2.5s linear infinite;
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #ff0080;
+}
+
+.splash-glitch-lines::before {
+  top: 30%;
+  animation-delay: 0s;
+}
+
+.splash-glitch-lines::after {
+  top: 70%;
+  animation-delay: 1.25s;
+}
+
+@keyframes glitch-line {
+  0% {
+    opacity: 1;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+}
+
+.splash-content {
+  text-align: center;
+  z-index: 10;
+}
+
+.splash-title {
+  margin-bottom: 1rem;
+}
+
+.splash-title-text {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(2rem, 8vw, 5rem);
+  font-weight: 900;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  position: relative;
+  display: inline-block;
+  text-shadow:
+    0 0 10px #00ffff,
+    0 0 20px #00ffff,
+    0 0 40px #00ffff,
+    0 0 80px #ff0080;
+  animation: title-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes title-glow {
+  0% {
+    text-shadow:
+      0 0 10px #00ffff,
+      0 0 20px #00ffff,
+      0 0 40px #00ffff,
+      0 0 80px #ff0080;
+  }
+  100% {
+    text-shadow:
+      0 0 20px #ff0080,
+      0 0 40px #ff0080,
+      0 0 60px #00ffff,
+      0 0 100px #00ffff;
+  }
+}
+
+.splash-subtitle {
+  font-family: 'Rajdhani', monospace;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  color: rgba(0, 255, 255, 0.8);
+  letter-spacing: 0.5em;
+  margin-bottom: 3rem;
+  animation: flicker 3s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.3; }
+  94% { opacity: 1; }
+  96% { opacity: 0.5; }
+  97% { opacity: 1; }
+}
+
+.splash-button {
+  position: relative;
+  padding: 1rem 3rem;
+  font-family: 'Orbitron', monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: #fff;
+  background: transparent;
+  border: 2px solid #00ffff;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.splash-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.splash-button:hover::before {
+  left: 100%;
+}
+
+.splash-button:hover {
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow:
+    0 0 20px rgba(0, 255, 255, 0.5),
+    0 0 40px rgba(255, 0, 128, 0.3),
+    inset 0 0 20px rgba(0, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.splash-button-text {
+  position: relative;
+  z-index: 2;
+}
+
+.splash-button-glitch {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  opacity: 0;
+  color: #00ffff;
+}
+
+.splash-button:hover .splash-button-glitch:nth-child(2) {
+  animation: glitch-text 0.3s infinite;
+  color: #ff0080;
+}
+
+.splash-button:hover .splash-button-glitch:nth-child(3) {
+  animation: glitch-text 0.3s infinite reverse;
+  color: #00ffff;
+}
+
+@keyframes glitch-text {
+  0% { transform: translate(-50%, -50%) translate(0); opacity: 0.8; }
+  20% { transform: translate(-50%, -50%) translate(-3px, 3px); }
+  40% { transform: translate(-50%, -50%) translate(3px, -3px); }
+  60% { transform: translate(-50%, -50%) translate(-3px, -3px); }
+  80% { transform: translate(-50%, -50%) translate(3px, 3px); }
+  100% { transform: translate(-50%, -50%) translate(0); opacity: 0.8; }
+}
+
+/* ========== SPLASH TRANSITION EPIC ========== */
+
+.splash-screen.exiting {
+  animation: splash-exit 1.5s ease-in-out forwards;
+}
+
+@keyframes splash-exit {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.1);
+    pointer-events: none;
+  }
+}
+
+.splash-transition {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.splash-transition-flash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: epic-flash 1.5s ease-out forwards;
+}
+
+@keyframes epic-flash {
+  0% {
+    background: transparent;
+  }
+  10% {
+    background: rgba(0, 255, 255, 0.8);
+  }
+  15% {
+    background: rgba(255, 0, 128, 0.6);
+  }
+  20% {
+    background: rgba(0, 255, 255, 0.4);
+  }
+  25% {
+    background: rgba(255, 255, 255, 0.9);
+  }
+  30% {
+    background: rgba(255, 0, 128, 0.5);
+  }
+  40% {
+    background: rgba(0, 255, 255, 0.3);
+  }
+  60% {
+    background: transparent;
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+.splash-transition-scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    rgba(0, 255, 255, 0.1) 1px,
+    rgba(0, 255, 255, 0.1) 2px
+  );
+  animation: scanlines-intense 0.1s linear infinite, scanlines-fade 1.5s ease-out forwards;
+}
+
+@keyframes scanlines-intense {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(2px); }
+}
+
+@keyframes scanlines-fade {
+  0% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.splash-transition-glitch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: screen-glitch 1.5s ease-out forwards;
+}
+
+@keyframes screen-glitch {
+  0%, 100% {
+    clip-path: inset(0 0 0 0);
+  }
+  5% {
+    clip-path: inset(20% 0 60% 0);
+    transform: translate(-5px, 0);
+  }
+  10% {
+    clip-path: inset(50% 0 20% 0);
+    transform: translate(5px, 0);
+  }
+  15% {
+    clip-path: inset(10% 0 70% 0);
+    transform: translate(-3px, 0);
+  }
+  20% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(3px, 0);
+  }
+  25% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0, 0);
   }
 }

@@ -55,7 +55,7 @@ export default function FontToggle() {
           </svg>
         )}
       </div>
-      <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 glass-strong text-white/90 px-4 py-2 rounded-[12px] text-sm whitespace-nowrap opacity-90 group-hover:opacity-100 transition-all pointer-events-none shadow-ios font-medium">
+      <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 glass-strong text-white/90 px-4 py-2 rounded-[12px] text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all pointer-events-none shadow-ios font-medium">
         {fontMode === "normal" ? "Modo Cyber" : "Modo Normal"}
       </span>
     </button>

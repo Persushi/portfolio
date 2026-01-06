@@ -7,12 +7,14 @@ interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: TranslationKeys;
+  isTransitioning: boolean;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>('es');
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language') as Language;
@@ -22,18 +24,35 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    localStorage.setItem('language', lang);
+    if (lang === language) return;
+
+    // Iniciar transición
+    setIsTransitioning(true);
+    document.documentElement.classList.add("lang-transitioning");
+
+    // Cambiar idioma después de un pequeño delay
+    setTimeout(() => {
+      setLanguageState(lang);
+      localStorage.setItem('language', lang);
+    }, 150);
+
+    // Terminar transición
+    setTimeout(() => {
+      setIsTransitioning(false);
+      document.documentElement.classList.remove("lang-transitioning");
+    }, 400);
   };
 
   const value = {
     language,
     setLanguage,
-    t: translations[language]
+    t: translations[language],
+    isTransitioning
   };
 
   return (
     <LanguageContext.Provider value={value}>
+      <div className={`lang-transition-overlay ${isTransitioning ? 'active' : ''}`} />
       {children}
     </LanguageContext.Provider>
   );

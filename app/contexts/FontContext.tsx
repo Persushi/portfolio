@@ -8,19 +8,27 @@ type FontMode = "glitch" | "normal";
 interface FontContextType {
   fontMode: FontMode;
   toggleFont: () => void;
+  isTransitioning: boolean;
 }
 
 const FontContext = createContext<FontContextType | undefined>(undefined);
 
 export function FontProvider({ children }: { children: ReactNode }) {
-  const [fontMode, setFontMode] = useState<FontMode>("normal");
+  const [fontMode, setFontMode] = useState<FontMode>("glitch");
   const [mounted, setMounted] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     setMounted(true);
     const savedFont = localStorage.getItem("fontMode") as FontMode;
     if (savedFont) {
       setFontMode(savedFont);
+      if (savedFont === "glitch") {
+        document.documentElement.classList.add("glitch-font");
+      }
+    } else {
+      // Modo cyber (glitch) es el default, aplicar la clase inmediatamente
+      document.documentElement.classList.add("glitch-font");
     }
   }, []);
 
@@ -37,7 +45,20 @@ export function FontProvider({ children }: { children: ReactNode }) {
   }, [fontMode, mounted]);
 
   const toggleFont = () => {
-    setFontMode((prev) => (prev === "glitch" ? "normal" : "glitch"));
+    // Activar animación de transición
+    setIsTransitioning(true);
+    document.documentElement.classList.add("cyber-transitioning");
+
+    // Cambiar el modo después de un pequeño delay para el efecto
+    setTimeout(() => {
+      setFontMode((prev) => (prev === "glitch" ? "normal" : "glitch"));
+    }, 100);
+
+    // Desactivar la transición después de la animación
+    setTimeout(() => {
+      setIsTransitioning(false);
+      document.documentElement.classList.remove("cyber-transitioning");
+    }, 600);
   };
 
   if (!mounted) {
@@ -45,7 +66,9 @@ export function FontProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <FontContext.Provider value={{ fontMode, toggleFont }}>
+    <FontContext.Provider value={{ fontMode, toggleFont, isTransitioning }}>
+      {/* Overlay de transición glitch */}
+      <div className={`cyber-transition-overlay ${isTransitioning ? 'active' : ''}`} />
       {children}
     </FontContext.Provider>
   );

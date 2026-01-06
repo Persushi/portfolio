@@ -2,6 +2,7 @@
 "use client";
 
 import { useLanguage } from "../contexts/LanguageContext";
+import { MapPin, Briefcase } from "lucide-react";
 
 export default function About() {
   const { t } = useLanguage();
@@ -30,11 +31,13 @@ export default function About() {
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center">
-            <div className="glass px-6 py-4 rounded-[16px] shadow-ios">
-              <p className="text-sm font-medium text-white/90">📍 {t.about.location}</p>
+            <div className="glass px-6 py-4 rounded-[16px] shadow-ios flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-[#5AC8FA]" />
+              <p className="text-sm font-medium text-white/90">{t.about.location}</p>
             </div>
-            <div className="glass px-6 py-4 rounded-[16px] shadow-ios">
-              <p className="text-sm font-medium text-white/90">💼 {t.about.status}</p>
+            <div className="glass px-6 py-4 rounded-[16px] shadow-ios flex items-center gap-2">
+              <Briefcase className="w-4 h-4 text-[#5AC8FA]" />
+              <p className="text-sm font-medium text-white/90">{t.about.status}</p>
             </div>
           </div>
         </div>

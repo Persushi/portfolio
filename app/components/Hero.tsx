@@ -46,8 +46,8 @@ export default function Hero() {
           </div>
 
           <div className="flex justify-center">
-            <div className="relative w-64 h-64 md:w-72 md:h-72 rounded-[40px] overflow-hidden bg-gradient-to-br from-[#5AC8FA] to-[#007AFF] shadow-ios-strong p-1">
-              <div className="w-full h-full rounded-[36px] overflow-hidden">
+            <div className="hero-image-frame relative w-64 h-64 md:w-72 md:h-72 overflow-hidden">
+              <div className="w-full h-full rounded-[36px] overflow-hidden bg-[#12131a]">
                 {!imageError ? (
                   <Image
                     src="me.jpg"

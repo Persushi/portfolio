@@ -7,7 +7,7 @@ export default function Navbar() {
   const { language, setLanguage, t } = useLanguage();
 
   return (
-    <nav className="fixed top-0 left-1/2 -translate-x-1/2 z-50 mt-2">
+    <nav className="fixed top-0 left-0 right-0 z-50 mt-2 flex justify-center navbar-reveal">
       {/* Notch container with glass effect */}
       <div className="relative">
         {/* Main notch bar */}
