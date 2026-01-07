@@ -14,28 +14,16 @@ interface FontContextType {
 const FontContext = createContext<FontContextType | undefined>(undefined);
 
 export function FontProvider({ children }: { children: ReactNode }) {
-  const [fontMode, setFontMode] = useState<FontMode>("glitch");
+  const [fontMode, setFontMode] = useState<FontMode>("normal");
   const [mounted, setMounted] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const savedFont = localStorage.getItem("fontMode") as FontMode;
-    if (savedFont) {
-      setFontMode(savedFont);
-      if (savedFont === "glitch") {
-        document.documentElement.classList.add("glitch-font");
-      }
-    } else {
-      // Modo cyber (glitch) es el default, aplicar la clase inmediatamente
-      document.documentElement.classList.add("glitch-font");
-    }
   }, []);
 
   useEffect(() => {
     if (!mounted) return;
-
-    localStorage.setItem("fontMode", fontMode);
 
     if (fontMode === "glitch") {
       document.documentElement.classList.add("glitch-font");

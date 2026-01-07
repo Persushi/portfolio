@@ -13,8 +13,6 @@ export default function SplashScreen({ onEnter }: SplashScreenProps) {
 
   useEffect(() => {
     setMounted(true);
-    // Aplicar clase glitch-font para el modo cyber
-    document.documentElement.classList.add("glitch-font");
     // Bloquear scroll y ocultar scrollbar completamente
     document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";

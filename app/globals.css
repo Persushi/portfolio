@@ -600,6 +600,195 @@ html.glitch-font .hero-image-frame::after {
   }
 }
 
+/* Soft fade border for profile image */
+.hero-image-fade {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    rgba(18, 19, 26, 0.3) 70%,
+    rgba(18, 19, 26, 0.7) 85%,
+    var(--background) 100%
+  );
+}
+
+/* ========== MANDARINA HIGHLIGHT ========== */
+
+.mandarina-text {
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.mandarina-text.normal {
+  background: linear-gradient(135deg, #FF8C00, #FFA500);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mandarina-text.normal:hover {
+  background: linear-gradient(135deg, #FFA500, #FFB347);
+  background-clip: text;
+  -webkit-background-clip: text;
+  filter: drop-shadow(0 0 8px rgba(255, 140, 0, 0.4));
+}
+
+.mandarina-text.cyber {
+  background: linear-gradient(135deg, #FF6B00, #FF8C00, #FFAA00);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  animation: mandarina-glow 2s ease-in-out infinite;
+}
+
+.mandarina-text.cyber:hover {
+  filter: drop-shadow(0 0 10px rgba(255, 107, 0, 0.6));
+}
+
+@keyframes mandarina-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 3px rgba(255, 140, 0, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 8px rgba(255, 140, 0, 0.5));
+  }
+}
+
+.mandarina-image-container {
+  position: absolute;
+  bottom: calc(100% + 1rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px) scale(0.95);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mandarina-image-container.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.mandarina-image {
+  width: auto;
+  height: auto;
+  max-width: 70vw;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 24px;
+  box-shadow:
+    0 20px 60px rgba(255, 140, 0, 0.4),
+    0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+html.glitch-font .mandarina-image {
+  box-shadow:
+    0 0 20px rgba(255, 107, 0, 0.4),
+    0 0 40px rgba(255, 140, 0, 0.2),
+    0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: mandarina-image-glow 2s ease-in-out infinite;
+}
+
+@keyframes mandarina-image-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 20px rgba(255, 107, 0, 0.4),
+      0 0 40px rgba(255, 140, 0, 0.2),
+      0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 30px rgba(255, 107, 0, 0.5),
+      0 0 60px rgba(255, 140, 0, 0.3),
+      0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ========== CAROUSEL CONTAINER FRAME ========== */
+
+.carousel-container-frame {
+  position: relative;
+  padding: 4px;
+  background: linear-gradient(90deg, rgba(90, 200, 250, 0.2), rgba(0, 122, 255, 0.3), rgba(90, 200, 250, 0.2));
+  box-shadow:
+    0 4px 30px rgba(0, 122, 255, 0.2),
+    0 2px 15px rgba(90, 200, 250, 0.15),
+    inset 0 0 30px rgba(0, 122, 255, 0.05);
+}
+
+.carousel-container-inner {
+  background: rgba(18, 19, 26, 0.8);
+  border-radius: 20px;
+}
+
+.carousel-container-frame::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 27px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(90, 200, 250, 0.5) 25%,
+    rgba(0, 122, 255, 0.5) 50%,
+    rgba(90, 200, 250, 0.5) 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: carousel-light-sweep 4s linear infinite;
+  z-index: -1;
+}
+
+@keyframes carousel-light-sweep {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Carousel frame cyber mode */
+html.glitch-font .carousel-container-frame {
+  padding: 4px;
+  background: linear-gradient(90deg, rgba(0, 255, 255, 0.15), rgba(255, 0, 128, 0.2), rgba(0, 255, 255, 0.15));
+  box-shadow:
+    0 0 20px rgba(0, 255, 255, 0.25),
+    0 0 40px rgba(255, 0, 128, 0.15),
+    inset 0 0 30px rgba(0, 255, 255, 0.05);
+}
+
+html.glitch-font .carousel-container-inner {
+  background: rgba(18, 19, 26, 0.9);
+}
+
+html.glitch-font .carousel-container-frame::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #00ffff 20%,
+    #ff0080 50%,
+    #00ffff 80%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: carousel-cyber-sweep 3s linear infinite;
+  filter: blur(2px);
+}
+
+@keyframes carousel-cyber-sweep {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
 /* ========== SPLASH SCREEN ========== */
 
 /* Cuando el splash está activo, ocultar todo el contenido y scrollbar */
@@ -1067,7 +1256,7 @@ html.glitch-font .glitch-reveal::before {
 
 .splash-glitch-lines::after {
   top: 70%;
-  animation-delay: 1.25s;
+  animation-delay: 0.15s;
 }
 
 @keyframes glitch-line {
@@ -1345,5 +1534,512 @@ html.glitch-font .glitch-reveal::before {
   25% {
     clip-path: inset(0 0 0 0);
     transform: translate(0, 0);
+  }
+}
+
+/* ========== EASTER EGG TAKEOVER ========== */
+
+.easter-egg-takeover {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  cursor: pointer;
+  animation: takeover-appear 0.3s ease-out forwards;
+}
+
+.easter-egg-glitch-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 0%, rgba(255, 0, 128, 0.1) 50%, transparent 100%),
+    linear-gradient(0deg, transparent 0%, rgba(0, 255, 255, 0.1) 50%, transparent 100%);
+  animation: glitch-overlay 0.15s steps(2) infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.easter-egg-image-takeover {
+  object-fit: contain;
+  animation: image-glitch-in 0.5s ease-out forwards;
+  z-index: 1;
+}
+
+.easter-egg-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+  pointer-events: none;
+  z-index: 3;
+  animation: scanlines-move 0.1s linear infinite;
+}
+
+@keyframes takeover-appear {
+  0% {
+    opacity: 0;
+    background: transparent;
+  }
+  50% {
+    background: rgba(0, 255, 255, 0.1);
+  }
+  100% {
+    opacity: 1;
+    background: rgba(10, 10, 15, 0.95);
+  }
+}
+
+@keyframes glitch-overlay {
+  0% {
+    transform: translateX(-2px);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateX(2px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(-1px);
+    opacity: 0.8;
+  }
+}
+
+@keyframes image-glitch-in {
+  0% {
+    opacity: 0;
+    filter: hue-rotate(90deg) blur(20px) brightness(2);
+    transform: scale(1.2) skewX(10deg);
+  }
+  20% {
+    opacity: 0.5;
+    filter: hue-rotate(45deg) blur(10px) brightness(1.5);
+    transform: scale(1.1) skewX(-5deg);
+  }
+  40% {
+    filter: hue-rotate(20deg) blur(5px);
+    transform: scale(1.05) skewX(2deg);
+  }
+  60% {
+    opacity: 0.8;
+    filter: hue-rotate(10deg) blur(2px);
+  }
+  80% {
+    filter: hue-rotate(5deg) blur(1px);
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    filter: hue-rotate(0deg) blur(0);
+    transform: scale(1);
+  }
+}
+
+@keyframes scanlines-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 4px;
+  }
+}
+
+/* Easter egg exit animations */
+.easter-egg-takeover.exiting {
+  animation: takeover-exit 0.6s ease-in forwards;
+}
+
+.easter-egg-image-takeover.exiting {
+  animation: image-glitch-out 0.6s ease-in forwards;
+}
+
+@keyframes takeover-exit {
+  0% {
+    opacity: 1;
+    background: rgba(10, 10, 15, 0.95);
+  }
+  50% {
+    background: rgba(0, 255, 255, 0.1);
+  }
+  100% {
+    opacity: 0;
+    background: transparent;
+  }
+}
+
+@keyframes image-glitch-out {
+  0% {
+    opacity: 1;
+    filter: hue-rotate(0deg) blur(0);
+    transform: scale(1);
+  }
+  20% {
+    filter: hue-rotate(20deg) blur(2px);
+    transform: scale(1.02) skewX(-2deg);
+  }
+  40% {
+    opacity: 0.8;
+    filter: hue-rotate(45deg) blur(5px);
+    transform: scale(1.05) skewX(5deg);
+  }
+  60% {
+    filter: hue-rotate(60deg) blur(10px) brightness(1.5);
+    transform: scale(1.1) skewX(-8deg);
+  }
+  80% {
+    opacity: 0.4;
+    filter: hue-rotate(90deg) blur(15px) brightness(2);
+    transform: scale(1.15) skewX(10deg);
+  }
+  100% {
+    opacity: 0;
+    filter: hue-rotate(120deg) blur(20px) brightness(3);
+    transform: scale(1.2) skewX(-15deg);
+  }
+}
+
+/* ========== CYBER MODE HINT ========== */
+
+.cyber-hint-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 0.75rem;
+  left: 0%;
+  animation: hint-fade-in 0.5s ease-out forwards;
+}
+
+.cyber-hint-bubble {
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.15), rgba(255, 0, 128, 0.15));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow:
+    0 0 20px rgba(0, 255, 255, 0.2),
+    0 0 40px rgba(255, 0, 128, 0.1);
+  animation: hint-pulse 2s ease-in-out infinite;
+}
+
+.cyber-hint-text {
+  font-family: var(--font-glitch);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #00ffff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  white-space: nowrap;
+}
+
+.cyber-hint-subtext {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0.25rem;
+}
+
+.cyber-hint-arrow {
+  color: #00ffff;
+  animation: arrow-bounce 1s ease-in-out infinite;
+  filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5));
+  margin-top: 0.5rem;
+}
+
+@keyframes hint-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hint-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 20px rgba(0, 255, 255, 0.2),
+      0 0 40px rgba(255, 0, 128, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 30px rgba(0, 255, 255, 0.4),
+      0 0 60px rgba(255, 0, 128, 0.2);
+  }
+}
+
+@keyframes arrow-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+/* Navbar hint - horizontal pointing to the right */
+.navbar-hint-container {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.625rem;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 128, 0.1));
+  border: 1px solid rgba(0, 255, 255, 0.25);
+  border-radius: 10px;
+  cursor: pointer;
+  animation: navbar-hint-fade-in 0.5s ease-out forwards;
+}
+
+.navbar-hint-text {
+  font-family: var(--font-glitch);
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: #00ffff;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+  white-space: nowrap;
+}
+
+.navbar-hint-arrow {
+  color: #00ffff;
+  animation: arrow-bounce-horizontal 1s ease-in-out infinite;
+  filter: drop-shadow(0 0 3px rgba(0, 255, 255, 0.4));
+}
+
+@keyframes navbar-hint-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes arrow-bounce-horizontal {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+}
+
+/* ========== CYBERPUNK CUSTOM CURSOR ========== */
+
+/* Custom cursor - Normal mode (iOS style) */
+html:not(.glitch-font),
+html:not(.glitch-font) * {
+  cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='%23007AFF' d='M5.5 3.21V20.8l5.71-5.71h8.29L5.5 3.21z'/><path fill='%235AC8FA' d='M5.5 3.21V20.8l5.71-5.71h8.29L5.5 3.21z' opacity='0.4' transform='translate(1,1)'/></svg>") 5 3, auto;
+}
+
+html:not(.glitch-font) a,
+html:not(.glitch-font) button,
+html:not(.glitch-font) [role="button"],
+html:not(.glitch-font) input[type="submit"],
+html:not(.glitch-font) .cursor-pointer {
+  cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='%235AC8FA' d='M5.5 3.21V20.8l5.71-5.71h8.29L5.5 3.21z'/><circle cx='17' cy='17' r='5' fill='none' stroke='%23007AFF' stroke-width='2'/></svg>") 5 3, pointer;
+}
+
+/* Custom cursor - Cyber/Glitch mode */
+html.glitch-font,
+html.glitch-font * {
+  cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='%2300ffff' d='M5.5 3.21V20.8l5.71-5.71h8.29L5.5 3.21z'/><path fill='%23ff0080' d='M5.5 3.21V20.8l5.71-5.71h8.29L5.5 3.21z' opacity='0.6' transform='translate(2,0)'/></svg>") 5 3, auto;
+}
+
+html.glitch-font a,
+html.glitch-font button,
+html.glitch-font [role="button"],
+html.glitch-font input[type="submit"],
+html.glitch-font .cursor-pointer {
+  cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><path fill='%2300ffff' d='M5.5 3.21V20.8l5.71-5.71h8.29L5.5 3.21z'/><path fill='%23ff0080' d='M5.5 3.21V20.8l5.71-5.71h8.29L5.5 3.21z' opacity='0.6' transform='translate(2,-1)'/><circle cx='19' cy='19' r='6' fill='none' stroke='%2300ffff' stroke-width='2'/><circle cx='19' cy='19' r='2.5' fill='%23ff0080'/></svg>") 5 3, pointer;
+}
+
+/* Selection styles */
+html.glitch-font *::selection {
+  background: rgba(0, 255, 255, 0.3);
+  color: #fff;
+}
+
+html:not(.glitch-font) *::selection {
+  background: rgba(0, 122, 255, 0.3);
+  color: #fff;
+}
+
+/* ========== RESPONSIVE MOBILE STYLES ========== */
+
+/* Mobile-first responsive typography and layout */
+@media (max-width: 768px) {
+  /* Section titles - smaller and centered */
+  section h2 {
+    font-size: 2.25rem !important;
+    text-align: center;
+  }
+
+  /* Paragraphs and body text */
+  section p {
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  /* Hero section mobile adjustments */
+  #home .space-y-6 {
+    text-align: center;
+  }
+
+  #home h1 {
+    font-size: 2rem !important;
+    line-height: 1.2;
+  }
+
+  #home h2 {
+    font-size: 1.25rem !important;
+  }
+
+  /* Center buttons on mobile */
+  #home .flex.gap-3 {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Skills cards - full width on mobile */
+  #skills .grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Contact cards - 2 columns on mobile */
+  #contact .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Timeline adjustments for mobile */
+  #projects .relative.max-w-5xl {
+    padding-left: 0;
+  }
+
+  /* Splash screen mobile */
+  .splash-title-text {
+    font-size: 1.75rem !important;
+    letter-spacing: 0.1em;
+  }
+
+  .splash-subtitle {
+    font-size: 0.875rem !important;
+    letter-spacing: 0.3em;
+  }
+
+  .splash-button {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+  }
+
+  /* Navbar mobile adjustments */
+  .navbar-reveal .glass-strong {
+    padding: 0.5rem 1rem;
+    min-width: 95vw !important;
+  }
+
+  /* Glass cards padding */
+  .glass-strong {
+    padding: 1.5rem !important;
+  }
+
+  /* About section info pills */
+  #about .flex.flex-wrap {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  section h2 {
+    font-size: 1.875rem !important;
+  }
+
+  #home h1 {
+    font-size: 1.75rem !important;
+  }
+
+  #home h2 {
+    font-size: 1.125rem !important;
+  }
+
+  .splash-title-text {
+    font-size: 1.5rem !important;
+    letter-spacing: 0.05em;
+  }
+
+  .splash-subtitle {
+    font-size: 0.75rem !important;
+    letter-spacing: 0.2em;
+  }
+
+  /* Contact cards - single column on very small screens */
+  #contact .grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Buttons stack vertically */
+  #home .flex.gap-3 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #home .flex.gap-3 a {
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+  }
+}
+
+/* Animations consistency for mobile - reduce motion for performance */
+@media (max-width: 768px) {
+  /* Simplified glitch animations for mobile */
+  .splash-glitch-lines::before,
+  .splash-glitch-lines::after {
+    height: 2px;
+  }
+
+  /* Smoother transitions on mobile */
+  .glitch-reveal {
+    animation-duration: 0.6s;
+  }
+
+  html.glitch-font .glitch-reveal {
+    animation-duration: 0.6s;
+  }
+
+  /* Reduce intensive effects on mobile */
+  .splash-grid {
+    background-size: 30px 30px;
+  }
+
+  /* Hero image frame - smaller on mobile */
+  .hero-image-frame {
+    border-radius: 30px;
+  }
+
+  .hero-image-frame::before {
+    border-radius: 33px;
+  }
+
+  .hero-image-frame::after {
+    border-radius: 32px;
+  }
+
+  html.glitch-font .hero-image-frame::before {
+    border-radius: 34px;
+  }
+
+  html.glitch-font .hero-image-frame::after {
+    border-radius: 36px;
   }
 }

@@ -9,19 +9,19 @@ export default function Projects() {
   return (
     <section id="projects" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-white mb-6">
+        <div className="text-center mb-10 md:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6">
             {t.experience.title}
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-[#5AC8FA] to-[#007AFF] mx-auto rounded-full"></div>
+          <div className="w-16 md:w-20 h-1 bg-gradient-to-r from-[#5AC8FA] to-[#007AFF] mx-auto rounded-full"></div>
         </div>
 
         {/* Timeline Container */}
-        <div className="relative max-w-5xl mx-auto">
+        <div className="relative max-w-5xl mx-auto pl-6 sm:pl-10 md:pl-0">
           {/* Vertical Timeline Line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#007AFF] via-[#5AC8FA] to-[#AF52DE] transform md:-translate-x-1/2"></div>
+          <div className="absolute left-[7px] sm:left-[11px] md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#007AFF] via-[#5AC8FA] to-[#AF52DE] md:-translate-x-1/2"></div>
 
-          <div className="space-y-12">
+          <div className="space-y-8 md:space-y-12">
             {t.experience.jobs.map((job, index) => (
               <div
                 key={index}
@@ -30,21 +30,21 @@ export default function Projects() {
                 }`}
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-8 md:left-1/2 w-6 h-6 transform md:-translate-x-1/2 z-10">
-                  <div className="w-full h-full rounded-full bg-gradient-to-br from-[#007AFF] to-[#5AC8FA] shadow-lg ring-4 ring-black"></div>
+                <div className="absolute left-0 sm:left-0 md:left-1/2 w-[14px] h-[14px] sm:w-[22px] sm:h-[22px] md:w-6 md:h-6 -translate-x-1/2 md:-translate-x-1/2 ml-[7px] sm:ml-[11px] md:ml-0 z-10">
+                  <div className="w-full h-full rounded-full bg-gradient-to-br from-[#007AFF] to-[#5AC8FA] shadow-lg ring-2 sm:ring-3 md:ring-4 ring-[#12131a]"></div>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#007AFF] to-[#5AC8FA] animate-ping opacity-20"></div>
                 </div>
 
                 {/* Card */}
-                <div className={`ml-20 md:ml-0 w-full md:w-[calc(55%-5rem)] ${
+                <div className={`ml-4 sm:ml-6 md:ml-0 w-full md:w-[calc(55%-5rem)] ${
                   index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
                 }`}>
-                  <div className="glass-strong rounded-[24px] p-6 md:p-8 shadow-ios hover:shadow-ios-strong transition-all duration-300 hover:scale-[1.02]"
+                  <div className="glass-strong rounded-[20px] md:rounded-[24px] p-5 sm:p-6 md:p-8 shadow-ios hover:shadow-ios-strong transition-all duration-300 hover:scale-[1.02]"
             >
-              <div className="mb-6">
-                <div className="flex flex-col gap-3 mb-3">
-                  <div className="flex items-center gap-2">
-                    <h3 className="text-2xl font-bold text-white">
+              <div className="mb-4 md:mb-6">
+                <div className="flex flex-col gap-2 sm:gap-3 mb-3">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">
                       {job.company}
                     </h3>
                     {job.linkedIn && (
@@ -66,26 +66,32 @@ export default function Projects() {
                       </a>
                     )}
                   </div>
-                  <p className="text-lg bg-gradient-to-r from-[#5AC8FA] to-[#007AFF] bg-clip-text text-transparent font-semibold">
+                  <p className="text-base sm:text-lg bg-gradient-to-r from-[#5AC8FA] to-[#007AFF] bg-clip-text text-transparent font-semibold">
                     {job.position}
                   </p>
-                  <span className="text-white/60 font-medium text-sm">
+                  <span className="text-white/60 font-medium text-xs sm:text-sm">
                     {job.period}
                   </span>
                 </div>
               </div>
 
-              <ul className="list-disc list-inside space-y-2 mb-6 text-white/80">
+              <ul className="list-disc list-inside space-y-1.5 sm:space-y-2 mb-4 md:mb-6 text-white/80 text-sm sm:text-base">
                 {job.description.map((item, itemIndex) => (
                   <li key={itemIndex}>{item}</li>
                 ))}
               </ul>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                {/* Industry tag with gradient accent */}
+                {job.industry && (
+                  <span className="px-2.5 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-[#007AFF] to-[#5AC8FA] text-white rounded-[10px] sm:rounded-[12px] text-[10px] sm:text-xs font-semibold shadow-md">
+                    {job.industry}
+                  </span>
+                )}
                 {job.tags.map((tag, tagIndex) => (
                   <span
                     key={tagIndex}
-                    className="px-4 py-2 glass text-white/90 rounded-[12px] text-xs font-medium hover:bg-white/20 transition-all duration-200"
+                    className="px-2.5 sm:px-4 py-1.5 sm:py-2 glass text-white/90 rounded-[10px] sm:rounded-[12px] text-[10px] sm:text-xs font-medium hover:bg-white/20 transition-all duration-200"
                   >
                     {tag}
                   </span>

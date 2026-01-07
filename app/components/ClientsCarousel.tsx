@@ -47,38 +47,40 @@ export default function ClientsCarousel() {
         <div className="w-20 h-1 bg-gradient-to-r from-[#5AC8FA] to-[#007AFF] mx-auto rounded-full"></div>
       </div>
 
-      <div className="relative" ref={containerRef}>
-        <motion.div
-          className="flex gap-6 items-center"
-          animate={{ x: [-0, -singleSetWidth] }}
-          transition={{
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: 30,
-            ease: "linear"
-          }}
-        >
-          {duplicatedClients.map((client, index) => (
-            <motion.div
-              key={`${client.name}-${index}`}
-              className="flex-shrink-0"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300, damping: 250 }}
-            >
-              <div className="relative w-80 h-80 rounded-[20px] p-4 transition-all duration-30">
-                <div className="relative w-full h-full transition-all duration-300 opacity-80 hover:opacity-100">
-                  <Image
-                    src={client.logo}
-                    alt={client.name}
-                    fill
-                    className="object-contain"
-                    unoptimized
-                  />
+      <div className="carousel-container-frame mx-4 sm:mx-8 rounded-[24px] overflow-hidden" ref={containerRef}>
+        <div className="carousel-container-inner py-6">
+          <motion.div
+            className="flex gap-6 items-center"
+            animate={{ x: [-0, -singleSetWidth] }}
+            transition={{
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 30,
+              ease: "linear"
+            }}
+          >
+            {duplicatedClients.map((client, index) => (
+              <motion.div
+                key={`${client.name}-${index}`}
+                className="flex-shrink-0"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300, damping: 250 }}
+              >
+                <div className="relative w-80 h-80 rounded-[20px] p-4">
+                  <div className="relative w-full h-full transition-all duration-300 opacity-80 hover:opacity-100">
+                    <Image
+                      src={client.logo}
+                      alt={client.name}
+                      fill
+                      className="object-contain"
+                      unoptimized
+                    />
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

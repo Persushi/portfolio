@@ -24,6 +24,10 @@ const SplashScreen = dynamic(() => import("./components/SplashScreen"), {
   ssr: false,
 });
 
+const EasterEgg = dynamic(() => import("./components/EasterEgg"), {
+  ssr: false,
+});
+
 export default function Home() {
   const { t } = useLanguage();
   const [showSplash, setShowSplash] = useState(true);
@@ -60,6 +64,7 @@ export default function Home() {
         <Contact />
       </div>
       <FontToggle />
+      <EasterEgg />
       <footer className="glitch-reveal glitch-reveal-7 border-t border-white/10 py-12 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="glass-strong rounded-[24px] p-8 shadow-ios text-center">
